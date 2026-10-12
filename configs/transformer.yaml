@@ -1,0 +1,19 @@
+# TahrirchiBERT-small fine-tune, sized for Apple Silicon (MPS).
+# On a CUDA GPU: raise max_train_samples to 200000+, batch_size to 32, try tahrirchi-bert-base.
+model_name: tahrirchi/tahrirchi-bert-small
+data_dir: data/processed
+output_dir: models/transformer
+max_train_samples: 60000
+max_eval_samples: 10000
+max_length: 256
+epochs: 2
+learning_rate: 5.0e-5
+batch_size: 16
+grad_accum: 2
+warmup_ratio: 0.06
+weight_decay: 0.01
+label_smoothing: 0.05
+eval_steps: 500
+early_stopping_patience: 3
+seed: 42
+report_to: none   # tensorboard | wandb

@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+*.egg-info/
+build/
+
+# Large artifacts: data and weights live on the Hugging Face Hub, not in git.
+data/*
+!data/.gitkeep
+models/*
+!models/.gitkeep
+wandb/
+runs/
