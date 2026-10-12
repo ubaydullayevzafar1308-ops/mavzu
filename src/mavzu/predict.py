@@ -109,6 +109,9 @@ class OnnxPredictor:
                 return_tensors="np",
             )
             feeds = {k: v.astype(np.int64) for k, v in enc.items() if k in self.input_names}
+            if "token_type_ids" in self.input_names and "token_type_ids" not in feeds:
+                # The graph is exported with this input, but not every tokenizer returns it.
+                feeds["token_type_ids"] = np.zeros_like(feeds["input_ids"])
             chunks.append(self.session.run(None, feeds)[0])
         return _softmax(np.concatenate(chunks))
 
