@@ -102,7 +102,7 @@ def train(cfg: dict) -> dict:
         per_device_train_batch_size=cfg["batch_size"],
         per_device_eval_batch_size=cfg["batch_size"] * 2,
         gradient_accumulation_steps=cfg["grad_accum"],
-        warmup_ratio=cfg["warmup_ratio"],
+        warmup_steps=cfg["warmup_ratio"],  # transformers 5 dropped warmup_ratio; a float < 1 is a ratio
         weight_decay=cfg["weight_decay"],
         label_smoothing_factor=cfg["label_smoothing"],
         lr_scheduler_type="linear",
