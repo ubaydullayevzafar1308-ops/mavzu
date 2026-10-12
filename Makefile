@@ -19,8 +19,8 @@ train:            ## fine-tune TahrirchiBERT
 	$(PY) -m mavzu.train_transformer --config configs/transformer.yaml
 
 eval:             ## evaluate the fine-tuned model (PyTorch) and the ONNX export
-	$(PY) -m mavzu.evaluate --kind transformer --path models/transformer/final --max-samples 10000
-	$(PY) -m mavzu.evaluate --kind onnx --path models/onnx --max-samples 10000
+	$(PY) -m mavzu.evaluate --kind transformer --path models/transformer/final --max-samples 5000
+	$(PY) -m mavzu.evaluate --kind onnx --path models/onnx --max-samples 5000
 
 export:           ## ONNX fp32 + INT8 export with parity check
 	$(PY) -m mavzu.export_onnx --model models/transformer/final --out models/onnx

@@ -1,0 +1,155 @@
+{
+  "accuracy": 0.8135627125425084,
+  "macro_f1": 0.6720416724798504,
+  "weighted_f1": 0.8053507477026774,
+  "per_class": {
+    "Avto": {
+      "precision": 0.6078,
+      "recall": 0.5254,
+      "f1-score": 0.5636,
+      "support": 59.0
+    },
+    "Ayollar": {
+      "precision": 0.6667,
+      "recall": 0.2308,
+      "f1-score": 0.3429,
+      "support": 26.0
+    },
+    "Dunyo": {
+      "precision": 0.8954,
+      "recall": 0.9396,
+      "f1-score": 0.917,
+      "support": 1340.0
+    },
+    "Foto": {
+      "precision": 0.8214,
+      "recall": 0.5897,
+      "f1-score": 0.6866,
+      "support": 39.0
+    },
+    "Iqtisodiyot": {
+      "precision": 0.5441,
+      "recall": 0.3109,
+      "f1-score": 0.3957,
+      "support": 119.0
+    },
+    "Jamiyat": {
+      "precision": 0.5882,
+      "recall": 0.5224,
+      "f1-score": 0.5534,
+      "support": 536.0
+    },
+    "Jinoyat": {
+      "precision": 0.7778,
+      "recall": 0.1707,
+      "f1-score": 0.28,
+      "support": 41.0
+    },
+    "Madaniyat": {
+      "precision": 0.8018,
+      "recall": 0.712,
+      "f1-score": 0.7542,
+      "support": 125.0
+    },
+    "O‘zbekiston": {
+      "precision": 0.7612,
+      "recall": 0.8618,
+      "f1-score": 0.8084,
+      "support": 1454.0
+    },
+    "Pazandachilik": {
+      "precision": 0.9474,
+      "recall": 0.9,
+      "f1-score": 0.9231,
+      "support": 20.0
+    },
+    "Qonunchilik": {
+      "precision": 0.9359,
+      "recall": 0.9182,
+      "f1-score": 0.927,
+      "support": 318.0
+    },
+    "Salomatlik": {
+      "precision": 0.5667,
+      "recall": 0.6939,
+      "f1-score": 0.6239,
+      "support": 49.0
+    },
+    "Siyosat": {
+      "precision": 0.8256,
+      "recall": 0.5966,
+      "f1-score": 0.6927,
+      "support": 119.0
+    },
+    "Sport": {
+      "precision": 0.9663,
+      "recall": 0.9795,
+      "f1-score": 0.9728,
+      "support": 585.0
+    },
+    "Texnologiya": {
+      "precision": 0.752,
+      "recall": 0.5562,
+      "f1-score": 0.6395,
+      "support": 169.0
+    }
+  },
+  "top_confusions": [
+    {
+      "true": "Jinoyat",
+      "pred": "Jamiyat",
+      "rate": 0.6829
+    },
+    {
+      "true": "Ayollar",
+      "pred": "Salomatlik",
+      "rate": 0.5
+    },
+    {
+      "true": "Iqtisodiyot",
+      "pred": "O‘zbekiston",
+      "rate": 0.4538
+    },
+    {
+      "true": "Jamiyat",
+      "pred": "O‘zbekiston",
+      "rate": 0.3433
+    },
+    {
+      "true": "Avto",
+      "pred": "O‘zbekiston",
+      "rate": 0.322
+    },
+    {
+      "true": "Siyosat",
+      "pred": "O‘zbekiston",
+      "rate": 0.2857
+    },
+    {
+      "true": "Texnologiya",
+      "pred": "Dunyo",
+      "rate": 0.284
+    },
+    {
+      "true": "Foto",
+      "pred": "Dunyo",
+      "rate": 0.2308
+    },
+    {
+      "true": "Madaniyat",
+      "pred": "O‘zbekiston",
+      "rate": 0.144
+    },
+    {
+      "true": "Salomatlik",
+      "pred": "O‘zbekiston",
+      "rate": 0.1429
+    }
+  ],
+  "n_test": 4999,
+  "throughput_docs_per_s": 38.6,
+  "latency": {
+    "p50_ms": 26.66,
+    "p95_ms": 30.78
+  }
+}
