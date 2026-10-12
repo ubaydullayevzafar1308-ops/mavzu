@@ -1,4 +1,4 @@
-.PHONY: setup data baseline train eval export serve demo docker test lint space
+.PHONY: setup data baseline train resume eval export serve demo docker test lint space
 
 PY ?= python
 
@@ -17,6 +17,9 @@ smoke:            ## 2k-sample transformer run to check the pipeline end to end
 
 train:            ## fine-tune TahrirchiBERT
 	$(PY) -m mavzu.train_transformer --config configs/transformer.yaml
+
+resume:           ## continue an interrupted `make train` from its last checkpoint
+	$(PY) -m mavzu.train_transformer --config configs/transformer.yaml --resume
 
 eval:             ## evaluate the fine-tuned model (PyTorch) and the ONNX export
 	$(PY) -m mavzu.evaluate --kind transformer --path models/transformer/final --max-samples 5000

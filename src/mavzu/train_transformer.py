@@ -56,7 +56,17 @@ def pick_device() -> str:
     return "cpu"
 
 
-def train(cfg: dict) -> dict:
+def last_checkpoint(ckpt_dir: Path) -> str | None:
+    """Most recently written checkpoint in ckpt_dir, or None.
+
+    Picked by write time, not step number: the directory can still hold higher-numbered
+    checkpoints of an earlier, shorter run.
+    """
+    states = sorted(ckpt_dir.glob("checkpoint-*/trainer_state.json"), key=lambda p: p.stat().st_mtime)
+    return str(states[-1].parent) if states else None
+
+
+def train(cfg: dict, resume: bool = False) -> dict:
     import torch
     from datasets import Dataset
     from transformers import (
@@ -74,6 +84,9 @@ def train(cfg: dict) -> dict:
     print(f"device: {device}")
 
     out = Path(cfg["output_dir"])
+    resume_from = last_checkpoint(out / "checkpoints") if resume else None
+    if resume:
+        print(f"resuming from {resume_from}" if resume_from else "no checkpoint found, starting from scratch")
     tok = AutoTokenizer.from_pretrained(cfg["model_name"])
     model = AutoModelForSequenceClassification.from_pretrained(
         cfg["model_name"], num_labels=len(LABELS), id2label=ID2LABEL, label2id=LABEL2ID
@@ -133,7 +146,7 @@ def train(cfg: dict) -> dict:
     )
 
     t0 = time.perf_counter()
-    trainer.train()
+    trainer.train(resume_from_checkpoint=resume_from)
     train_s = time.perf_counter() - t0
 
     final_dir = out / "final"
@@ -145,7 +158,8 @@ def train(cfg: dict) -> dict:
         "model_name": cfg["model_name"],
         "device": device,
         "train_samples": len(train_df),
-        "train_minutes": round(train_s / 60, 1),
+        "train_minutes": round(train_s / 60, 1),  # this session only when resumed
+        "resumed_from": resume_from,
         "val_accuracy": eval_metrics.get("eval_accuracy"),
         "val_macro_f1": eval_metrics.get("eval_macro_f1"),
         "torch": torch.__version__,
@@ -160,11 +174,12 @@ def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--config", type=Path, default=Path("configs/transformer.yaml"))
     p.add_argument("--max-train-samples", type=int, help="override config (quick smoke runs)")
+    p.add_argument("--resume", action="store_true", help="continue from the last checkpoint in output_dir")
     args = p.parse_args()
     cfg = {**DEFAULTS, **(yaml.safe_load(args.config.read_text()) or {})}
     if args.max_train_samples:
         cfg["max_train_samples"] = args.max_train_samples
-    train(cfg)
+    train(cfg, resume=args.resume)
 
 
 if __name__ == "__main__":

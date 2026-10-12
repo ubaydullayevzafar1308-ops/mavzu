@@ -97,6 +97,7 @@ make data       # download + normalize + leakage audit
 make baseline   # train and evaluate the TF-IDF baseline
 make smoke      # 2k-sample transformer run to check the pipeline
 make train      # full fine-tune (MPS / CUDA / CPU, picked automatically)
+make resume     # continue an interrupted `make train` from its last checkpoint
 make export     # ONNX fp32 + INT8, parity check vs PyTorch
 make eval       # reports/ for the PyTorch and ONNX models
 make serve      # http://localhost:8000/docs
