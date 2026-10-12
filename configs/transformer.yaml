@@ -3,17 +3,20 @@
 model_name: tahrirchi/tahrirchi-bert-small
 data_dir: data/processed
 output_dir: models/transformer
-max_train_samples: 60000
-max_eval_samples: 10000
-max_length: 256
-epochs: 2
+# Sized for a ~10 minute run on an M4 MacBook (MPS): the smoke test measured 1.38 optimizer steps/s
+# (32 samples per step, ~44 samples/s) and ~17 s per 3k-sample evaluation. 20000 samples = 625 steps
+# = ~7.5 min of training plus 3 mid-run evaluations and the final one, ~9.5 min in total.
+max_train_samples: 20000
+max_eval_samples: 3000
+max_length: 128
+epochs: 1
 learning_rate: 5.0e-5
 batch_size: 16
 grad_accum: 2
 warmup_ratio: 0.06
 weight_decay: 0.01
 label_smoothing: 0.05
-eval_steps: 500
+eval_steps: 200
 early_stopping_patience: 3
 seed: 42
 report_to: none   # tensorboard | wandb
