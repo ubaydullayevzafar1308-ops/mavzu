@@ -1,7 +1,7 @@
 # TF-IDF + calibrated LinearSVC. Fits in a few minutes on a laptop CPU.
 data_dir: data/processed
 output_dir: models/baseline
-max_train_samples: 100000   # null = full train set (needs ~16 GB RAM)
+max_train_samples: 50000    # null = full train set (needs ~16 GB RAM)
 seed: 42
 word_max_features: 200000
 char_max_features: 300000
@@ -9,4 +9,4 @@ word_ngram: [1, 2]
 char_ngram: [2, 5]
 min_df: 3
 C: 0.5
-calibration_cv: 3
+calibration_cv: 2
