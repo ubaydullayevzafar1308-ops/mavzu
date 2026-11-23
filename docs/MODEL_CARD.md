@@ -21,7 +21,7 @@ tags:
 Fine-tuned [TahrirchiBERT-small](https://huggingface.co/tahrirchi/tahrirchi-bert-small) that
 classifies Uzbek news text into 15 topics. Includes an INT8 ONNX export for CPU inference.
 
-Code, training details and evaluation: https://github.com/<your-username>/mavzu
+Code, training details and evaluation: https://github.com/ubaydullayevzafar1308-ops/mavzu
 
 ## Labels
 

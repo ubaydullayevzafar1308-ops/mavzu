@@ -16,3 +16,6 @@ models/*
 wandb/
 runs/
 *.log
+
+# Personal notes, kept locally
+docs/PLAN.md

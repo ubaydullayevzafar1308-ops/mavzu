@@ -1,8 +1,6 @@
 # Mavzu 🇺🇿 — Uzbek News Topic Classification
 
-[![CI](https://github.com/<your-username>/mavzu/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-username>/mavzu/actions/workflows/ci.yml)
-[![Demo](https://img.shields.io/badge/🤗%20Space-demo-yellow)](https://huggingface.co/spaces/<your-username>/mavzu)
-[![Model](https://img.shields.io/badge/🤗%20Model-mavzu-blue)](https://huggingface.co/<your-username>/mavzu)
+[![CI](https://github.com/ubaydullayevzafar1308-ops/mavzu/actions/workflows/ci.yml/badge.svg)](https://github.com/ubaydullayevzafar1308-ops/mavzu/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -89,7 +87,7 @@ evaluation splits. Counts are written to `data/processed/stats.json`.
 ## Quickstart
 
 ```bash
-git clone https://github.com/<your-username>/mavzu && cd mavzu
+git clone https://github.com/ubaydullayevzafar1308-ops/mavzu && cd mavzu
 conda create -n mavzu python=3.11 -y && conda activate mavzu
 make setup
 
